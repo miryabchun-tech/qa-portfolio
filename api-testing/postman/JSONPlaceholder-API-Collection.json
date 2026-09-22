@@ -1,0 +1,718 @@
+{
+  "info": {
+    "_postman_id": "9d4d7b1e-3b2f-4c2d-9f0d-1a2b3c4d5e6f",
+    "name": "JSONPlaceholder API Collection",
+    "description": "API testing collection for a QA portfolio using JSONPlaceholder. Covers GET, POST, PUT, PATCH, DELETE, path parameters, query parameters, request bodies, response validation, JSON validation, and HTTP status codes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://jsonplaceholder.typicode.com"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET Requests",
+      "item": [
+        {
+          "name": "API-001 - Get all posts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/posts"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is a JSON array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test(\"Posts contain expected fields\", function () {",
+                  "    const post = pm.response.json()[0];",
+                  "    pm.expect(post).to.have.property(\"userId\");",
+                  "    pm.expect(post).to.have.property(\"id\");",
+                  "    pm.expect(post).to.have.property(\"title\");",
+                  "    pm.expect(post).to.have.property(\"body\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-002 - Get post by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains post ID 1\", function () {",
+                  "    pm.expect(pm.response.json().id).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-003 - Get invalid post ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/posts/9999"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-006 - Get posts by userId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/posts?userId=1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"All returned posts belong to userId 1\", function () {",
+                  "    pm.response.json().forEach(function (post) {",
+                  "        pm.expect(post.userId).to.eql(1);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-007 - Get all users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is a JSON array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-008 - Get user by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains user ID 1\", function () {",
+                  "    pm.expect(pm.response.json().id).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-009 - Get invalid user ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users/9999"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-010 - Get all comments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/comments"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is a JSON array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-011 - Get comments for post",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/comments?postId=1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"All comments belong to postId 1\", function () {",
+                  "    pm.response.json().forEach(function (comment) {",
+                  "        pm.expect(comment.postId).to.eql(1);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-012 - Path parameter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-013 - Multiple query parameters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/comments?postId=1&_limit=3"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains no more than 3 comments\", function () {",
+                  "    pm.expect(pm.response.json().length).to.be.at.most(3);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "POST Requests",
+      "item": [
+        {
+          "name": "API-004 - Create post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"QA Test Post\",\n  \"body\": \"This is a test post created via Postman.\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains created post fields\", function () {",
+                  "    const data = pm.response.json();",
+                  "    pm.expect(data).to.have.property(\"id\");",
+                  "    pm.expect(data.title).to.eql(\"QA Test Post\");",
+                  "    pm.expect(data.userId).to.eql(1);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-005 - Create post without title",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"Post without title\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-014 - Create valid post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"API Test Post\",\n  \"body\": \"Created during API testing.\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-024 - Verify POST response structure",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Structure Test\",\n  \"body\": \"Verify response structure.\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains expected fields\", function () {",
+                  "    const data = pm.response.json();",
+                  "    [\"id\", \"title\", \"body\", \"userId\"].forEach(function (field) {",
+                  "        pm.expect(data).to.have.property(field);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUT and PATCH Requests",
+      "item": [
+        {
+          "name": "API-015 - PUT update post",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"title\": \"Updated Post\",\n  \"body\": \"Updated through PUT.\",\n  \"userId\": 1\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Post is updated\", function () {",
+                  "    pm.expect(pm.response.json().title).to.eql(\"Updated Post\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-016 - PATCH update post",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/posts/1",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Patched Post\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Title is patched\", function () {",
+                  "    pm.expect(pm.response.json().title).to.eql(\"Patched Post\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DELETE Requests",
+      "item": [
+        {
+          "name": "API-017 - Delete post",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-018 - Delete invalid post ID",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/posts/9999"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Response status is successful\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-025 - Verify DELETE response",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"DELETE request returns a successful status\", function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Additional Validation",
+      "item": [
+        {
+          "name": "API-019 - Users with query parameter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users?username=Bret"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is a JSON array\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-020 - Comments with postId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/comments?postId=1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Comments contain postId 1\", function () {",
+                  "    pm.response.json().forEach(function (comment) {",
+                  "        pm.expect(comment.postId).to.eql(1);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-021 - Verify post body fields",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/posts/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Post contains required fields\", function () {",
+                  "    const data = pm.response.json();",
+                  "    [\"userId\", \"id\", \"title\", \"body\"].forEach(function (field) {",
+                  "        pm.expect(data).to.have.property(field);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-022 - Verify user body fields",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users/1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"User contains expected fields\", function () {",
+                  "    const data = pm.response.json();",
+                  "    [\"id\", \"name\", \"username\", \"email\"].forEach(function (field) {",
+                  "        pm.expect(data).to.have.property(field);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "API-023 - Verify comments body",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/comments?postId=1"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Comments contain expected fields\", function () {",
+                  "    const comments = pm.response.json();",
+                  "    pm.expect(comments.length).to.be.above(0);",
+                  "    [\"postId\", \"id\", \"name\", \"email\", \"body\"].forEach(function (field) {",
+                  "        pm.expect(comments[0]).to.have.property(field);",
+                  "    });",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
