@@ -72,7 +72,7 @@ Example POST data:
 - Response body contains a JSON array.
 - Each post contains the expected fields.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -88,7 +88,7 @@ Example POST data:
 - Response contains `userId`, `id`, `title`, and `body`.
 - Returned `id` corresponds to the requested post.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -102,7 +102,7 @@ Example POST data:
 - API handles the request according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -117,7 +117,7 @@ Example POST data:
 - Response contains a JSON array.
 - Returned posts correspond to the requested user.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -132,7 +132,7 @@ Example POST data:
 - Response contains a JSON array.
 - Returned comments are related to post `1`.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -158,7 +158,7 @@ Example POST data:
 - Response contains the submitted data.
 - Response contains an `id`.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -184,7 +184,7 @@ Example POST data:
 - Response contains `id`.
 - Returned values correspond to the submitted data.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -203,7 +203,7 @@ Example POST data:
 - API handles the request according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -230,7 +230,7 @@ Example POST data:
 - Response contains the updated data.
 - Returned `id` corresponds to the requested post.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -254,7 +254,7 @@ Example POST data:
 - API handles the request according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -277,7 +277,7 @@ Example POST data:
 - Request is processed successfully.
 - Response contains the updated title.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -298,7 +298,7 @@ Example POST data:
 - Request is processed successfully.
 - Response contains the updated body.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -314,7 +314,7 @@ Example POST data:
 - Request is processed successfully.
 - Response is returned according to JSONPlaceholder behavior.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -328,7 +328,7 @@ Example POST data:
 - API handles the request according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -345,7 +345,7 @@ Example POST data:
 - Response contains a user object.
 - Response contains expected user information such as `id`, `name`, `username`, and `email`.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -359,7 +359,7 @@ Example POST data:
 - API handles the request according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -376,7 +376,7 @@ Example POST data:
 - Response contains a JSON array.
 - Returned comments are related to post `1`.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -392,7 +392,7 @@ Example POST data:
 - Response contains a `Content-Type` header.
 - Response is returned as JSON.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -411,7 +411,7 @@ Response contains the following fields:
 - `title`
 - `body`
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -425,7 +425,7 @@ Response contains the following fields:
 - `id` field is present.
 - `id` is returned as a number.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -449,7 +449,7 @@ Response contains the following fields:
 - Response contains the submitted fields.
 - Response contains an `id`.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -466,7 +466,7 @@ Response contains the following fields:
 - Response contains a JSON array.
 - Returned posts correspond to `userId=2`.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -482,7 +482,7 @@ Response contains the following fields:
 - API handles the invalid endpoint according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -496,7 +496,7 @@ Response contains the following fields:
 - API handles the invalid ID according to its documented behavior.
 - Response status and body are inspected.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -512,7 +512,7 @@ Response contains the following fields:
 - Response is returned within an acceptable response time.
 - Actual response time is recorded in Postman.
 
-**Status:** Not Run
+**Status:** PASS
 
 ---
 
@@ -549,10 +549,10 @@ The test suite covers:
 # Test Execution
 
 **Total Test Cases:** 25  
-**Passed:** 0  
+**Passed:** 25  
 **Failed:** 0  
 **Blocked:** 0  
-**Not Run:** 25
+**Not Run:** 0
 
 The test cases will be executed using **Postman**.
 
