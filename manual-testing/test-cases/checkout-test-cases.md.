@@ -1,0 +1,405 @@
+# Checkout Test Cases — SauceDemo
+
+## Application Under Test
+
+**Application:** SauceDemo  
+**URL:** https://www.saucedemo.com/  
+**Module:** Checkout
+
+## Test Scope
+
+The Checkout module was tested to verify:
+
+- Navigation from Cart to Checkout
+- Required field validation
+- First Name field
+- Last Name field
+- ZIP/Postal Code field
+- Checkout form validation
+- Valid checkout information
+- Checkout Overview page
+- Product information on Overview page
+- Product price on Overview page
+- Order summary
+- Completing an order
+- Successful order confirmation
+
+## Testing Types
+
+- Functional Testing
+- Positive Testing
+- Negative Testing
+- Validation Testing
+- UI Testing
+- End-to-End Testing
+
+## Test Environment
+
+- **Browser:** Google Chrome
+- **Operating System:** Windows
+- **Application:** SauceDemo
+- **Test User:** `standard_user`
+
+## Test Data
+
+**Valid checkout information:**
+
+- First Name: `Ivan`
+- Last Name: `Tester`
+- ZIP/Postal Code: `21000`
+
+---
+
+# Test Case Summary
+
+| ID | Test Case | Type | Status |
+|---|---|---|---|
+| TC-CHECKOUT-001 | Navigate from Cart to Checkout | Positive / Functional | PASS |
+| TC-CHECKOUT-002 | Verify First Name is required | Negative / Validation | PASS |
+| TC-CHECKOUT-003 | Verify Last Name is required | Negative / Validation | PASS |
+| TC-CHECKOUT-004 | Verify ZIP/Postal Code is required | Negative / Validation | PASS |
+| TC-CHECKOUT-005 | Submit Checkout form with valid information | Positive / Functional | PASS |
+| TC-CHECKOUT-006 | Verify Checkout Overview page | Positive / UI | PASS |
+| TC-CHECKOUT-007 | Verify product information on Overview page | Positive / UI | PASS |
+| TC-CHECKOUT-008 | Verify product price on Overview page | Positive / UI | PASS |
+| TC-CHECKOUT-009 | Verify order summary | Positive / Functional | PASS |
+| TC-CHECKOUT-010 | Complete order successfully | Positive / End-to-End | PASS |
+
+---
+
+# Detailed Test Cases
+
+## TC-CHECKOUT-001 — Navigate from Cart to Checkout
+
+**Title:** Verify navigation from Cart to Checkout
+
+**Preconditions:**
+- User is logged in.
+- At least one product has been added to the Cart.
+- Cart page is open.
+
+**Steps:**
+1. Open the Cart.
+2. Verify that the selected product is displayed.
+3. Click the **Checkout** button.
+
+**Expected Result:**
+- User is redirected to the Checkout page.
+- Checkout information form is displayed.
+- First Name, Last Name and ZIP/Postal Code fields are available.
+
+**Actual Result:**
+- User was successfully redirected to the Checkout page.
+- Checkout information form was displayed.
+- Required fields were available.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-002 — Verify First Name is required
+
+**Title:** Verify validation when First Name is empty
+
+**Preconditions:**
+- User is on the Checkout Information page.
+
+**Test Data:**
+- First Name: empty
+- Last Name: `Tester`
+- ZIP/Postal Code: `21000`
+
+**Steps:**
+1. Leave the First Name field empty.
+2. Enter `Tester` into the Last Name field.
+3. Enter `21000` into the ZIP/Postal Code field.
+4. Click **Continue**.
+
+**Expected Result:**
+- Checkout cannot continue.
+- A validation message indicating that First Name is required is displayed.
+
+**Actual Result:**
+- Checkout could not continue.
+- A validation message was displayed for the required First Name field.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-003 — Verify Last Name is required
+
+**Title:** Verify validation when Last Name is empty
+
+**Preconditions:**
+- User is on the Checkout Information page.
+
+**Test Data:**
+- First Name: `Ivan`
+- Last Name: empty
+- ZIP/Postal Code: `21000`
+
+**Steps:**
+1. Enter `Ivan` into the First Name field.
+2. Leave the Last Name field empty.
+3. Enter `21000` into the ZIP/Postal Code field.
+4. Click **Continue**.
+
+**Expected Result:**
+- Checkout cannot continue.
+- A validation message indicating that Last Name is required is displayed.
+
+**Actual Result:**
+- Checkout could not continue.
+- A validation message was displayed for the required Last Name field.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-004 — Verify ZIP/Postal Code is required
+
+**Title:** Verify validation when ZIP/Postal Code is empty
+
+**Preconditions:**
+- User is on the Checkout Information page.
+
+**Test Data:**
+- First Name: `Ivan`
+- Last Name: `Tester`
+- ZIP/Postal Code: empty
+
+**Steps:**
+1. Enter `Ivan` into the First Name field.
+2. Enter `Tester` into the Last Name field.
+3. Leave the ZIP/Postal Code field empty.
+4. Click **Continue**.
+
+**Expected Result:**
+- Checkout cannot continue.
+- A validation message indicating that ZIP/Postal Code is required is displayed.
+
+**Actual Result:**
+- Checkout could not continue.
+- A validation message was displayed for the required ZIP/Postal Code field.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-005 — Submit Checkout form with valid information
+
+**Title:** Verify that valid checkout information can be submitted
+
+**Preconditions:**
+- User is logged in.
+- Product has been added to the Cart.
+- User is on the Checkout Information page.
+
+**Test Data:**
+- First Name: `Ivan`
+- Last Name: `Tester`
+- ZIP/Postal Code: `21000`
+
+**Steps:**
+1. Enter `Ivan` into the First Name field.
+2. Enter `Tester` into the Last Name field.
+3. Enter `21000` into the ZIP/Postal Code field.
+4. Click **Continue**.
+
+**Expected Result:**
+- The form is accepted.
+- User is redirected to the Checkout Overview page.
+
+**Actual Result:**
+- The form was accepted.
+- User was successfully redirected to the Checkout Overview page.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-006 — Verify Checkout Overview page
+
+**Title:** Verify that Checkout Overview page is displayed correctly
+
+**Preconditions:**
+- User has successfully completed the Checkout Information form.
+
+**Steps:**
+1. Complete the Checkout Information form with valid data.
+2. Click **Continue**.
+3. Observe the Checkout Overview page.
+
+**Expected Result:**
+- Checkout Overview page is displayed.
+- Selected product information is visible.
+- Payment and shipping information sections are displayed.
+- Order summary is displayed.
+- **Finish** button is available.
+
+**Actual Result:**
+- Checkout Overview page was displayed correctly.
+- Required order information was visible.
+- Order summary and Finish button were displayed.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-007 — Verify product information on Overview page
+
+**Title:** Verify that the selected product is displayed correctly on the Overview page
+
+**Preconditions:**
+- User has added a product to the Cart.
+- User has reached the Checkout Overview page.
+
+**Steps:**
+1. Observe the product displayed on the Overview page.
+2. Compare the product with the product selected on the Products page.
+
+**Expected Result:**
+- The correct product is displayed.
+- Product name matches the selected product.
+- Product information is displayed correctly.
+
+**Actual Result:**
+- The correct product was displayed.
+- Product name matched the selected product.
+- Product information was displayed correctly.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-008 — Verify product price on Overview page
+
+**Title:** Verify that the product price is displayed correctly on the Overview page
+
+**Preconditions:**
+- User has added a product to the Cart.
+- User has reached the Checkout Overview page.
+
+**Steps:**
+1. Observe the product price on the Overview page.
+2. Compare it with the product price previously displayed on the Products page and Cart page.
+
+**Expected Result:**
+- The product price is displayed.
+- The price matches the previously displayed product price.
+- The price is readable.
+
+**Actual Result:**
+- The product price was displayed correctly.
+- The price matched the previously displayed product price.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-009 — Verify order summary
+
+**Title:** Verify that the order summary is calculated and displayed correctly
+
+**Preconditions:**
+- User has reached the Checkout Overview page.
+- At least one product is in the order.
+
+**Steps:**
+1. Observe the item total.
+2. Observe the tax amount.
+3. Observe the total amount.
+4. Compare the displayed order information.
+
+**Expected Result:**
+- Item total is displayed.
+- Tax is displayed.
+- Total amount is displayed.
+- The order summary is presented clearly and consistently.
+
+**Actual Result:**
+- Item total was displayed.
+- Tax was displayed.
+- Total amount was displayed.
+- Order summary was displayed correctly.
+
+**Status:** PASS
+
+---
+
+## TC-CHECKOUT-010 — Complete order successfully
+
+**Title:** Verify that an order can be completed successfully
+
+**Preconditions:**
+- User is logged in.
+- Product has been added to the Cart.
+- Valid Checkout Information has been entered.
+- User is on the Checkout Overview page.
+
+**Steps:**
+1. Verify the product and order information.
+2. Click the **Finish** button.
+3. Observe the resulting page.
+
+**Expected Result:**
+- The order is successfully completed.
+- Checkout Complete page is displayed.
+- A confirmation message is displayed.
+- User is informed that the order has been successfully placed.
+
+**Actual Result:**
+- The order was successfully completed.
+- Checkout Complete page was displayed.
+- Confirmation message was displayed.
+
+**Status:** PASS
+
+---
+
+# Test Execution Summary
+
+| Metric | Result |
+|---|---:|
+| Total Test Cases | 10 |
+| Passed | 10 |
+| Failed | 0 |
+| Blocked | 0 |
+
+## Defects Found
+
+No defects were found during the initial Checkout module testing with the `standard_user` account.
+
+## Conclusion
+
+The SauceDemo Checkout module was tested using functional, positive, negative, validation, UI, and end-to-end scenarios.
+
+All 10 executed test cases passed successfully.
+
+The tested functionality includes:
+
+- Navigation from Cart to Checkout
+- Required field validation
+- First Name validation
+- Last Name validation
+- ZIP/Postal Code validation
+- Valid checkout information
+- Checkout Overview
+- Product information
+- Product price
+- Order summary
+- Successful order completion
+
+## Next Steps
+
+Planned testing activities:
+
+- Login checklist
+- Products checklist
+- Cart checklist
+- Checkout checklist
+- Regression testing
+- Exploratory testing
+- Testing with `problem_user`
+- Bug reporting
