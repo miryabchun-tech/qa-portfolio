@@ -211,3 +211,7 @@ qa-portfolio/
 **GitHub:** https://github.com/miryabchun-tech
 
 **Portfolio:** https://github.com/miryabchun-tech/qa-portfolio
+
+**LinkedIn:** https://www.linkedin.com/in/kolya-ryabchun-46ba60355/
+
+**Telegram:** @User56143
